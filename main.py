@@ -1,52 +1,59 @@
-import time 
-from colorama import Fore, init
-import pyfiglet
+import time
 import os
 import colorama
 import urllib.request
 import json
-banner = """
+from colorama import Fore, init
+import pyfiglet
 
+colorama.init()
+
+banner = """
 -----------------------------------|
                 INFO               |
 -----------------------------------|
 """
+
 os.system('cls' if os.name == 'nt' else 'clear')
-print(colorama.Fore.RED)
+print(Fore.RED)
 pyfiglet.print_figlet("Asylum")
-print(colorama.Fore.GREEN)
+print(Fore.GREEN)
 print("             IP-TRACKER")
-print(colorama.Fore.RESET)
+print(Fore.RESET)
+
 while True:
-    ip = input("Enter IP==>")
-    print(colorama.Fore.CYAN+"Please Wait...")
+    ip = input("Enter IP ==> ")
+    print(Fore.CYAN + "Please Wait...")
     time.sleep(2.3)
-    print(colorama.Fore.RESET)
+    print(Fore.RESET)
+
     url = "http://ip-api.com/json/"
     response = urllib.request.urlopen(url + ip)
     data = response.read()
     values = json.loads(data)
+
     print(banner)
-    print(colorama.Fore.GREEN + "Status: " + values['status'])
-    print(colorama.Fore.RESET)
+    print(Fore.GREEN + f"Status: {values['status']}")
+    print(Fore.RESET)
     print('')
-    print("IP: " + values['query'])
+
+    print(f"IP: {values['query']}")
     print('')
-    print("City: " + values['city'])
+    print(f"City: {values['city']}")
     print('')
-    print("ZIP Code: " + values['zip'])
+    print(f"ZIP Code: {values['zip']}")
     print('')
-    print("ISP: " + values['isp'])
+    print(f"ISP: {values['isp']}")
     print('')
-    print("Country: " + values['country'])
+    print(f"Country: {values['country']}")
     print('')
-    print("Region: " + values['region'])
+    print(f"Region: {values['region']}")
     print('')
-    print("Time Zone: " + values['timezone'])
+    print(f"Time Zone: {values['timezone']}")
     print('')
-    print("CountryCode: " + values['countryCode'])
+    print(f"CountryCode: {values['countryCode']}")
     print('')
-    print("Org: " + values['org'])
+    print(f"Org: {values['org']}")
     print('')
-    print("As: " + values['as'])  
+    print(f"As: {values['as']}")
     break
